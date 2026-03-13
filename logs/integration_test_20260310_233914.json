@@ -1,0 +1,67 @@
+{
+  "timestamp": "2026-03-10T23:39:14.312158",
+  "api_healthy": true,
+  "logs_ok": true,
+  "results": [
+    {
+      "name": "Penalty Query",
+      "question": "What is the penalty for late payment?",
+      "passed": false,
+      "issues": [
+        "Missing term: '2.40%'"
+      ],
+      "confidence": 0.9,
+      "hallucination_score": 0.22000000000000003,
+      "is_safe": false,
+      "response_time_ms": 18712.623834609985,
+      "num_sources": 3
+    },
+    {
+      "name": "Document Query",
+      "question": "What documents are required for loan application?",
+      "passed": false,
+      "issues": [
+        "Missing term: 'Aadhaar'",
+        "Missing term: 'income'",
+        "High hallucination: 0.62"
+      ],
+      "confidence": 0.75,
+      "hallucination_score": 0.625,
+      "is_safe": false,
+      "response_time_ms": 15403.042316436768,
+      "num_sources": 3
+    },
+    {
+      "name": "Interest Rate Query",
+      "question": "What is the interest rate for home loans?",
+      "passed": false,
+      "issues": [
+        "Returned NOT FOUND but expected answer",
+        "Missing term: 'interest'",
+        "Missing term: 'rate'",
+        "Missing term: '%'",
+        "Low confidence: 0.10"
+      ],
+      "confidence": 0.1,
+      "hallucination_score": 0.08000000000000002,
+      "is_safe": true,
+      "response_time_ms": 14980.072498321533,
+      "num_sources": 3
+    },
+    {
+      "name": "NOT FOUND Test",
+      "question": "Is there COVID relief for loans?",
+      "passed": true,
+      "issues": [],
+      "confidence": 0.1,
+      "hallucination_score": 0.08000000000000002,
+      "is_safe": true,
+      "response_time_ms": 11701.807975769043,
+      "num_sources": 3
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "passed": 1
+  }
+}
