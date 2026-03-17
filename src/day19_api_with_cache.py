@@ -12,7 +12,7 @@ from src.day10_hybrid import HybridSearch
 from src.day6_reranker import TransformerReranker
 from src.day18_query_optimizer import QueryOptimizer
 from src.day8_detector import HallucinationDetector
-from src.day19_cache_manager import EnhancedCacheManager
+from src.day19_cache_manager import  CacheManager
 from src.day23_prompt_security import PromptSecurity
 from src.day25_input_validator import InputValidator
 
