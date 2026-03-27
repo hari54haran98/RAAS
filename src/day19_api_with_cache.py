@@ -1,4 +1,5 @@
 """
+D"""
 DAY 19/24/25: API with Enhanced Rate Limiting + Security + Input Validation
 """
 
@@ -12,14 +13,17 @@ from src.day10_hybrid import HybridSearch
 from src.day6_reranker import TransformerReranker
 from src.day18_query_optimizer import QueryOptimizer
 from src.day8_detector import HallucinationDetector
-from src.day19_cache_manager import  CacheManager
+from src.day19_cache_manager import EnhancedCacheManager  # ← FIXED
 from src.day23_prompt_security import PromptSecurity
 from src.day25_input_validator import InputValidator
 
+# Initialize FastAPI
 app = FastAPI(title="RAAS API with Enhanced Security", version="6.0.0")
+
+# Initialize all components
 cache = EnhancedCacheManager()
 security = PromptSecurity()
-validator = InputValidator()  # NEW
+validator = InputValidator()
 
 print("\n🚀 Loading RAAS components...")
 hybrid_search = HybridSearch()
@@ -44,7 +48,7 @@ class AnswerResponse(BaseModel):
     is_safe: bool
     cached: bool
     security_flagged: bool
-    validation_warnings: List[str]  # NEW
+    validation_warnings: List[str]
     rate_limit: dict
     processing_time_ms: float
 
@@ -54,7 +58,7 @@ async def ask_question(request: Request, response: Response, req: QuestionReques
     start_time = time.time()
     user_id = request.client.host
 
-    # ===== STEP 1: INPUT VALIDATION (NEW) =====
+    # ===== STEP 1: INPUT VALIDATION =====
     validation_result = validator.validate(req.question)
 
     if not validation_result.is_valid:
@@ -155,6 +159,16 @@ async def security_stats():
 async def validation_help():
     """Get input validation rules."""
     return validator.get_validation_help()
+
+
+@app.get("/metrics")
+async def metrics():
+    """Prometheus metrics endpoint"""
+    from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
+    return Response(
+        content=generate_latest(),
+        media_type=CONTENT_TYPE_LATEST
+    )
 
 
 if __name__ == "__main__":
