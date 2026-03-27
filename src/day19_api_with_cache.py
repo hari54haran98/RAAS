@@ -1,5 +1,4 @@
 """
-D"""
 DAY 19/24/25: API with Enhanced Rate Limiting + Security + Input Validation
 """
 
@@ -13,7 +12,7 @@ from src.day10_hybrid import HybridSearch
 from src.day6_reranker import TransformerReranker
 from src.day18_query_optimizer import QueryOptimizer
 from src.day8_detector import HallucinationDetector
-from src.day19_cache_manager import EnhancedCacheManager  # ← FIXED
+from src.day19_cache_manager import EnhancedCacheManager
 from src.day23_prompt_security import PromptSecurity
 from src.day25_input_validator import InputValidator
 
@@ -71,7 +70,6 @@ async def ask_question(request: Request, response: Response, req: QuestionReques
             }
         )
 
-    # Use sanitized input for further processing
     safe_question = validation_result.sanitized_input
     validation_warnings = validation_result.warnings
 
@@ -94,7 +92,6 @@ async def ask_question(request: Request, response: Response, req: QuestionReques
     if security_result["risk_level"] == "HIGH":
         raise HTTPException(status_code=400, detail="Suspicious input detected")
 
-    # Use the most sanitized version
     final_question = security_result["sanitized_input"]
 
     # ===== STEP 4: CHECK CACHE =====
