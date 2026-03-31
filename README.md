@@ -113,7 +113,13 @@ LangChain: 100 lines, quick prototyping | RAAS: 2000+ lines, production-ready
 📄 License
 MIT
 
-👤 Author
-Hariharan — GitHub | LinkedIn
+ Author
+Hariharan
+
+GitHub: @hari54haran98
+
+LinkedIn: in/hariharan54
+
+
 
 ⭐ Star this project if you find it useful!
