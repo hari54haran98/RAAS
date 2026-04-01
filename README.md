@@ -9,9 +9,7 @@
 
 ## 🎥 Demo Video
 
-[Watch the Demo](YOUR_YOUTUBE_LINK)
-
-*Replace YOUR_YOUTUBE_LINK with your actual YouTube video link*
+www.linkedin.com/in/hariharan54
 
 ---
 
